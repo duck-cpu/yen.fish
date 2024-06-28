@@ -7,12 +7,10 @@
 <meta name="dc.relation" content="https://yen.fish/" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='icon' type='image/x-icon' href='/images/icons/ke.png' />
-
 <link rel="alternate" type="application/rss+xml" href="index.xml" title="YEN.fish" />
-
 <link href="css/main.css" rel="stylesheet">
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="/node_modules/jquery.terminal/css/jquery.terminal.min.css" rel="stylesheet" />
 
 <div id="preloader"></div>
 
@@ -29,7 +27,7 @@
         </nav>
 
         <div class="grid">
-            <div class="item medium ">
+            <div class="item medium  ">
                 <div class="cards">
                     <div class="cardsHeader">
                         <div class="cardsControls">
@@ -48,7 +46,8 @@
                 </div>
             </div>
 
-            <div class="item medium ">
+
+            <div class="item smallarge ">
                 <div class="cards">
                     <div class="cardsHeader">
                         <div class="cardsControls">
@@ -57,15 +56,13 @@
                                     class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
                         </div>
                     </div>
-                    <div class="cardsBody">
-                        <h1>terminal</h1>
-                        <p>
-                        </p>
+                    <div class="cardsBodyTerm">
+                        <p id="terminal" style="margin-top: 0px; margin-bottom: 0px;">terminal</p>
                     </div>
                 </div>
             </div>
 
-            <div class="item medium ">
+            <div class="item smallarge ">
                 <div class="cards">
                     <div class="cardsHeader">
                         <div class="cardsControls">
@@ -75,32 +72,10 @@
                         </div>
                     </div>
                     <div class="cardsBody">
-                        <h1>updates</h1>
                         <p>
-                            <div class="scrollbox">
-                                <ul>
-                                    <li>
-                                        <span style="font-weight: bold;">06/26/24</span>: helo
-                                    </li>
-                                </ul>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item medium ">
-                <div class="cards">
-                    <div class="cardsHeader">
-                        <div class="cardsControls">
-                            <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
-                            <div> <i class="fa-solid fa-window-minimize"></i> <i
-                                    class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                    </div>
-                    <div class="cardsBody">
-                        <h1>pending</h1>
-                        <p>
+                            <a class="twitter-timeline" data-lang="ja" data-width="500" data-height="300"
+                                href="https://twitter.com/djglassdream?ref_src=twsrc%5Etfw">tweets</a>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                         </p>
                     </div>
                 </div>
@@ -118,13 +93,17 @@
                     <div class="cardsBody">
                         <h1>blog</h1>
                         <p>
-                            <p>Read the rest of the blog <a href="blog">here</a>.</p>
+                            <p>read more <a href="/blog/posts/latest">here</a>.</p>
 
                             <ul>
-                                <li>June 26: <strong><a
-                                            href="https://nenrikido.neocities.org/blog/post/mega-site-update/"> Hmm
+                                <li>June 28 2024: <strong><a
+                                            href="https://nenrikido.neocities.org/blog/post/mega-site-update/"> init
                                         </a></strong>
-                                    - stuff..</li>
+                                    - the birth of the website</li>
+                                <li>June 26 2024: <strong><a
+                                            href="https://nenrikido.neocities.org/blog/post/mega-site-update/"> init
+                                        </a></strong>
+                                    - the birth of the website</li>
                             </ul>
                         </p>
                     </div>
@@ -211,15 +190,104 @@
         <script>
             twemoji.parse(document.body)
         </script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-
-        <script src="js/jquery.terminal-2.42.0.min.js"></script>
-
+        <script src="/node_modules/jquery.terminal/js/jquery.terminal.min.js"></script>
         <!-- With modern browsers, jQuery mousewheel is not actually needed; scrolling will still work -->
+        <script src="/node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
+        <script>
+            async function main() {
+                let pyodide = await loadPyodide();
 
-        <script src="js/jquery.mousewheel-min.js"></script>
+                // Function to load scripts dynamically
+                async function loadScript(scriptName) {
+                    try {
+                        const response = await fetch(`./python/${scriptName}.py`);
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        const scriptContent = await response.text();
+                        return scriptContent;
+                    } catch (error) {
+                        console.error('Failed to load script:', scriptName, error);
+                        throw error;
+                    }
+                }
 
-        <link href="css/jquery.terminal-2.42.0.min.css" rel="stylesheet" />
+
+                // Function to run a script and capture the output
+                async function runScript(scriptContent, terminal) {
+                    pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = sys.stderr = StringIO()
+                `);
+
+                    let inputRequested = false;
+                    let inputPrompt = "";
+
+                    pyodide.runPython(`
+import builtins
+original_input = builtins.input
+def custom_input(prompt=''):
+    global inputRequested, inputPrompt
+    inputRequested = True
+    inputPrompt = prompt
+    return ""
+builtins.input = custom_input
+                `);
+
+                    await pyodide.runPythonAsync(scriptContent);
+
+                    while (pyodide.globals.get("inputRequested")) {
+                        const prompt = pyodide.globals.get("inputPrompt");
+                        const userInput = await terminal.read(prompt);
+                        pyodide.runPython(`
+inputRequested = False
+builtins.input = original_input
+                `);
+                        pyodide.globals.set("userInput", userInput);
+                        pyodide.runPython(`
+user_input = globals().pop('userInput')
+input = lambda prompt='': user_input
+                    `);
+                        await pyodide.runPythonAsync(scriptContent);
+                    }
+
+                    const output = pyodide.runPython(`
+sys.stdout.getvalue()
+                `);
+                    return output;
+                }
+
+
+                // Initialize the terminal
+                $("#terminal").terminal(async function (command) {
+                    try {
+                        if (command.startsWith('run ')) {
+                            const scriptName = command.split(' ')[1];
+                            const scriptContent = await loadScript(scriptName);
+                            const result = await runScript(scriptContent, this);
+                            this.echo(result);
+                        } else {
+                            const result = await runScript(command, this);
+                            this.echo(result);
+                        }
+                    } catch (err) {
+                        this.error(err.toString());
+                    }
+                }, {
+                    greetings: 'いらっしゃいませ!',
+                    prompt: 'yen@fish>>> ',
+                    name: 'py_terminal',
+                    height: 200,
+                    width: '100%',
+                    theme: 'bootstrap'
+                });
+            }
+            main();
+        </script>
+
 </body>
 
 </html>

@@ -39,19 +39,9 @@
                         </div>
                     </div>
                     <div class="cardsBody">
-                        <h1>about</h1>
-                        <p> hello, I'm Vincent and I do fun things on computers. I'm currently in school and on track to
-                            graduate soon
-                            with
-                            a bachelors in information security. I am skilled in html, javascript, css,
-                            react.js, python, sql, node, and git. I plan on specializing in web vulnerabilities.
-                            <br /><br />
-                            I enjoy photography and graphic design as well. In my
-                            free
-                            time I make music and skateboard. You can read more about that on my blog.
-                            <br /><br />
-
-                            hit me up if you need anything or want to chat!
+                        <h1>index</h1>
+                        <p>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -113,7 +103,6 @@
 
         <script type="text/javascript" src="js/clock.js"></script>
         <script defer type="text/javascript" src="js/start.js"></script>
-        <script src="js/theme.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
@@ -121,9 +110,8 @@
         <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous">
         </script>
         <script defer src="js/lightbox.js"></script>
-        <script defer src="js/yt_lite.js"></script>
-        <script defer src="https://unpkg.com/lunr/lunr.js"></script>
         <script defer src="js/search.js"></script>
+        <script defer src="https://unpkg.com/lunr/lunr.js"></script>
         <script>
             var loader = document.getElementById("preloader");
             window.addEventListener("load", function () {
