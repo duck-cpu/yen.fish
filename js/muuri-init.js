@@ -6,6 +6,7 @@ function initMuuri() {
     grid = new Muuri('.grid', {
         dragEnabled: true,
         dragHandle: '.cardsHeader',
+        layoutOnResize: true,
         showDuration: 600,
         showEasing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
         visibleStyles: {
@@ -23,6 +24,9 @@ function initMuuri() {
     console.log("Grid initialized:", grid);
     grid.refreshItems().layout();
     window.addEventListener('load', function () {
+        grid.refreshItems().layout();
+    });
+    window.addEventListener('resize', function () {
         grid.refreshItems().layout();
     });
 }

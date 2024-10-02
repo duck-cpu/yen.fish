@@ -240,13 +240,25 @@ footer#footer ul li a.selected {
     opacity: 1;
   }
 }
+
+.item {
+  box-sizing: border-box;
+  margin: 10px;
+  /* Optionally set a minimum height to prevent overlaps */
+  min-height: 180px; /* Adjust this based on your layout */
+}
+
 .grid {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   width: 80%;
   margin: 1rem auto 5rem;
 }
 .grid .item {
   position: absolute;
+  width: 30%;
+  height: 100%;
   margin: 1rem;
   z-index: 1;
 }
@@ -1305,7 +1317,6 @@ table td {
   border: 1px solid var(--primary);
 }
 .terminal .terminal-output {
-  background-color: #ffffff;
   color: #00ff00;
 }
 .terminal .terminal-output div div {

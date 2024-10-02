@@ -96,12 +96,7 @@
                             <p>read more <a href="/blog/posts/latest">here</a>.</p>
 
                             <ul>
-                                <li>June 28 2024: <strong><a
-                                            href="https://nenrikido.neocities.org/blog/post/mega-site-update/"> init
-                                        </a></strong>
-                                    - the birth of the website</li>
-                                <li>June 26 2024: <strong><a
-                                            href="https://nenrikido.neocities.org/blog/post/mega-site-update/"> init
+                                <li>June 26 2024: <strong><a href=""> init
                                         </a></strong>
                                     - the birth of the website</li>
                             </ul>
@@ -144,14 +139,21 @@
                     </ul>
                 </div>
 
-                <div class="modal-list"> <a class="modal-menu " href="index.html"> <span>Home </span> <i
-                            class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="about"> <span>About
-                        </span> <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="gallery">
-                        <span>Gallery </span> <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu "
-                        href="https://github.com/duck-cpu"> <span>Code </span> <i
-                            class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="blog"> <span>Blog
-                        </span> <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="library">
-                        <span>Library </span> <i class="fa-solid fa-chevron-right"></i></a> </div>
+                <div class="modal-list">
+                    <a class="modal-menu " href="index.html">
+                        <span>Home </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="about.html">
+                        <span>About </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="gallery.html">
+                        <span>Gallery </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu "
+                        href="https://github.com/duck-cpu">
+                        <span>Code </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="blog.html">
+                        <span>Blog </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="library.html">
+                        <span>Library </span>
+                        <i class="fa-solid fa-chevron-right"></i></a> </div>
 
             </div>
         </div>
@@ -218,23 +220,23 @@
                 // Function to run a script and capture the output
                 async function runScript(scriptContent, terminal) {
                     pyodide.runPython(`
-import sys
-from io import StringIO
-sys.stdout = sys.stderr = StringIO()
+                    import sys
+                    from io import StringIO
+                    sys.stdout = sys.stderr = StringIO()
                 `);
 
                     let inputRequested = false;
                     let inputPrompt = "";
 
                     pyodide.runPython(`
-import builtins
-original_input = builtins.input
-def custom_input(prompt=''):
-    global inputRequested, inputPrompt
-    inputRequested = True
-    inputPrompt = prompt
-    return ""
-builtins.input = custom_input
+                    import builtins
+                    original_input = builtins.input
+                    def custom_input(prompt=''):
+                        global inputRequested, inputPrompt
+                        inputRequested = True
+                        inputPrompt = prompt
+                        return ""
+                    builtins.input = custom_input
                 `);
 
                     await pyodide.runPythonAsync(scriptContent);
@@ -243,19 +245,19 @@ builtins.input = custom_input
                         const prompt = pyodide.globals.get("inputPrompt");
                         const userInput = await terminal.read(prompt);
                         pyodide.runPython(`
-inputRequested = False
-builtins.input = original_input
+                        inputRequested = False
+                        builtins.input = original_input
                 `);
                         pyodide.globals.set("userInput", userInput);
                         pyodide.runPython(`
-user_input = globals().pop('userInput')
-input = lambda prompt='': user_input
+                        user_input = globals().pop('userInput')
+                        input = lambda prompt='': user_input
                     `);
                         await pyodide.runPythonAsync(scriptContent);
                     }
 
                     const output = pyodide.runPython(`
-sys.stdout.getvalue()
+                            sys.stdout.getvalue()
                 `);
                     return output;
                 }
@@ -277,7 +279,7 @@ sys.stdout.getvalue()
                         this.error(err.toString());
                     }
                 }, {
-                    greetings: 'いらっしゃいませ!',
+                    greetings: 'いらっしゃいませ! Try: run bright',
                     prompt: 'yen@fish>>> ',
                     name: 'py_terminal',
                     height: 200,
