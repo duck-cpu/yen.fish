@@ -244,8 +244,9 @@ footer#footer ul li a.selected {
 .item {
   box-sizing: border-box;
   margin: 10px;
+  min-height: 240px;
   /* Optionally set a minimum height to prevent overlaps */
-  min-height: 180px; /* Adjust this based on your layout */
+  /* Adjust this based on your layout */
 }
 
 .grid {
@@ -258,7 +259,7 @@ footer#footer ul li a.selected {
 .grid .item {
   position: absolute;
   width: 30%;
-  height: 100%;
+  height: auto;
   margin: 1rem;
   z-index: 1;
 }
@@ -1324,4 +1325,23 @@ table td {
 }
 .terminal .terminal-header {
   display: none; /* Hide the default header */
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.post-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-card img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<title>yen.fish</title>
+<title>blog</title>
 <meta charset="utf-8">
 <meta name="description" content="hidden oasis" />
 <meta name="dc.relation" content="https://yen.fish/" />
@@ -23,25 +23,12 @@
 
             <ul class="searchResults"></ul>
         </nav>
-
-        <div class="grid">
-            <div class="item large ">
-                <div class="cards">
-                    <div class="cardsHeader">
-                        <div class="cardsControls">
-                            <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
-                            <div> <i class="fa-solid fa-window-minimize"></i> <i
-                                    class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                    </div>
-                    <div class="cardsBody">
-                        <h1>index</h1>
-                        <p>
-                        </p>
-                    </div>
-                </div>
+        <div id="blog-posts" class="posts-grid">
+            <div class="grid">
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
     </div>
@@ -129,6 +116,8 @@
         <script>
             twemoji.parse(document.body)
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/14.1.2/marked.min.js"></script>
+        <script src="/js/blog.js"></script>
 </body>
 
 </html>
