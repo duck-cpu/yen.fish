@@ -1,9 +1,8 @@
 [
     {
-      "id": "1",
-      "title": "The Beginning",
-      "date": "2024-10-02",
-      "content": "### _11110100110100000001000_\n\nHello there. 💫\n\nI started this website back in the summer this year. A little bit has changed since then. I was previously pursuing a bachelor's in \"Cybersecurity and Information Assurance\" because the software world freaked me out.\n\nWell.. Mostly just the job security thing. Or ability to *get* a job in the first place.\n\nAnyway, I realized this is my actual passion and I don't give a shit about that because I'll get to do something I love so I have switched focus back to software. I have also realized that Cyber is a useful niche as long as that's all you want to do. I am passionate about security but, I don't want to be a help desk-er or sys admin for years until I get to work as an analyst.\n\n*Riveting.*\n\nI have been reading K&R 2 C as it's colloquially known. It's amazing. I love C so much.\n\nPerhaps I'll be an embedded systems engineer or something one day.\n\nBut yeah not much exciting yet, but eager for the future.\n\n> It does not matter how slowly you go,\n\n> as long as you don't give up. - Confucius\n\n```sh\n#include <stdio.h>\n\nint main() {\n    printf(\"made with love\");\n}\n```\n"
+        "id": "1",
+        "title": "The Beginning",
+        "date": "2024-10-02",
+        "content": "### _11110100110100000001000_\n\nHello there. \ud83d\udcab\n\nI started this website back in the summer this year. A little bit has changed since then. I was previously pursuing a bachelor's in \"Cybersecurity and Information Assurance\" because the software world freaked me out.\n\nWell.. Mostly just the job security thing. Or ability to *get* a job in the first place.\n\nAnyway, I realized this is my actual passion and I don't give a shit about that because I'll get to do something I love so I have switched focus back to software. I have also realized that Cyber is a useful niche as long as that's all you want to do. I am passionate about security but, I don't want to be a help desk-er or sys admin for years until I get to work as an analyst.\n\n*Riveting.*\n\nI have been reading K&R 2 C as it's colloquially known. It's amazing. I love C so much.\n\nPerhaps I'll be an embedded systems engineer or something one day.\n\nBut yeah not much exciting yet, but eager for the future.\n\n> It does not matter how slowly you go,\n\n> as long as you don't give up. - Confucius\n\n```sh\n#include <stdio.h>\n\nint main() {\n\u00a0 \u00a0 printf(\"made with love\");\n}\n```\n"
     }
-  ]
-  
+]
