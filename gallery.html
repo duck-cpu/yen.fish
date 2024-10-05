@@ -28,112 +28,194 @@
             <ul class="searchResults"></ul>
         </nav>
 
-        <div class="grid">
-            <div class="item large ">
-                <div class="cards">
-                    <div class="cardsHeader">
-                        <div class="cardsControls">
-                            <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
-                            <div> <i class="fa-solid fa-window-minimize"></i> <i
-                                    class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
-                        </div>
-                    </div>
-                    <div class="cardsBody">
-                        <h1>gallery</h1>
-                        <p>
+        <div id="gallery-grid" class="grid"></div>
 
-                        </p>
+
+
+        <footer id="footer">
+            <ul>
+                <li> <button id="footer-button">start</button> </li>
+                <li> <a href="index.html#" id="btn-back-to-top" onclick="call()"><i
+                            class="fa-solid fa-circle-chevron-up"></i></a></li>
+                <li>
+                    <div id="clock" class="clock" onload="showTime()"></div>
+                </li>
+            </ul>
+        </footer>
+
+        <div id="start-menu" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>　円　。魚</h1> <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+
+                    <div class="modal-bio">
+                        <img class="modal-bio img" src="images/icons/ke.png">
+                        <p style="font-size:large; font-weight:bold;">Vincent</p>
+                        <p align="center"><i class="fa-regular fa-map"></i> <a href="sitemap">Sitemap</a></p>
+
+                        <ul style="font-style: italic;">
+                            <li>OS: nenrikido</li>
+                            <li>Version: 2.0</li>
+                            <li>Host: .. </li>
+                            <li>Processor: Apple M1 </li>
+                            <li>Since: 06/26/24</li>
+                        </ul>
                     </div>
+
+                    <div class="modal-list"> <a class="modal-menu " href="index.html">
+                            <span>Home </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="about.html">
+                            <span>About </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="gallery.html">
+                            <span>Gallery </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu "
+                            href="https://github.com/duck-cpu">
+                            <span>Code </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="blog.html">
+                            <span>Blog </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="library.html">
+                            <span>Library </span>
+                            <i class="fa-solid fa-chevron-right"></i></a> </div>
+
                 </div>
             </div>
-        </div>
 
-    </div>
-    </div>
-    <footer id="footer">
-        <ul>
-            <li> <button id="footer-button">start</button> </li>
-            <li> <a href="index.html#" id="btn-back-to-top" onclick="call()"><i
-                        class="fa-solid fa-circle-chevron-up"></i></a></li>
-            <li>
-                <div id="clock" class="clock" onload="showTime()"></div>
-            </li>
-        </ul>
-    </footer>
+            <script>
+                function call() {
+                    var body = $("html, body");
+                    body.stop().animate({
+                        scrollTop: 0
+                    }, 500, 'swing', function () {});
+                }
+            </script>
 
-    <div id="start-menu" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1>　円　。魚</h1> <span class="close">&times;</span>
-            </div>
-            <div class="modal-body">
+            <script type="text/javascript" src="js/clock.js"></script>
+            <script defer type="text/javascript" src="js/start.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+                integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
+            <script defer src="js/muuri-init.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous">
+            </script>
+            <script defer src="js/lightbox.js"></script>
+            <script defer src="js/search.js"></script>
 
-                <div class="modal-bio">
-                    <img class="modal-bio img" src="images/icons/ke.png">
-                    <p style="font-size:large; font-weight:bold;">Vincent</p>
-                    <p align="center"><i class="fa-regular fa-map"></i> <a href="sitemap">Sitemap</a></p>
+            <script>
+                var loader = document.getElementById("preloader");
+                window.addEventListener("load", function () {
+                    loader.style.display = "none";
+                });
+                var s = document.getElementById("preloader").style;
+                s.opacity = 1;
+                (function fade() {
+                    (s.opacity -= 0.1) < 0 ? (s.display = "none") : setTimeout(fade, 40);
+                })();
+            </script>
 
-                    <ul style="font-style: italic;">
-                        <li>OS: nenrikido</li>
-                        <li>Version: 2.0</li>
-                        <li>Host: .. </li>
-                        <li>Processor: Apple M1 </li>
-                        <li>Since: 06/26/24</li>
-                    </ul>
-                </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    // Define your images array
+                    const images = [
+                        '1.jpg',
+                        '2.jpg',
+                        '3.jpg',
+                        '4.jpg',
+                        '5.jpg',
+                        '6.jpg',
+                        '7.jpg',
+                        '8.jpg',
+                        '9.jpg',
+                        '10.png',
+                        '11.png',
+                        '12.png',
+                        '13.png',
+                        '14.png',
+                        '15.png',
+                        '16.png',
+                        '17.png',
+                        '18.png',
+                        '19.png',
+                        '20.png',
+                        '21.png'
+                        // Add more image file names here
+                    ];
 
-                <div class="modal-list"> <a class="modal-menu " href="index.html">
-                        <span>Home </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="about.html">
-                        <span>About </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="gallery.html">
-                        <span>Gallery </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu "
-                        href="https://github.com/duck-cpu">
-                        <span>Code </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="blog.html">
-                        <span>Blog </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> <a class="modal-menu " href="library.html">
-                        <span>Library </span>
-                        <i class="fa-solid fa-chevron-right"></i></a> </div>
+                    // Shuffle the images array using Fisher-Yates algorithm
+                    function shuffleArray(array) {
+                        for (let i = array.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [array[i], array[j]] = [array[j], array[i]];
+                        }
+                    }
 
-            </div>
-        </div>
-        <script>
-            function call() {
-                var body = $("html, body");
-                body.stop().animate({
-                    scrollTop: 0
-                }, 500, 'swing', function () {});
-            }
-        </script>
+                    shuffleArray(images); // Shuffle the images array
 
-        <script type="text/javascript" src="js/clock.js"></script>
-        <script defer type="text/javascript" src="js/start.js"></script>
-        <script src="js/theme.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
-        <script defer src="js/muuri-init.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous">
-        </script>
-        <script defer src="js/lightbox.js"></script>
-        <script defer src="js/yt_lite.js"></script>
-        <script defer src="js/search.js"></script>
-        <script>
-            var loader = document.getElementById("preloader");
-            window.addEventListener("load", function () {
-                loader.style.display = "none";
-            });
-            var s = document.getElementById("preloader").style;
-            s.opacity = 1;
-            (function fade() {
-                (s.opacity -= 0.1) < 0 ? (s.display = "none") : setTimeout(fade, 40);
-            })();
-        </script>
-        <script>
-            twemoji.parse(document.body)
-        </script>
+                    const gridContainer = document.getElementById('gallery-grid');
+
+                    images.forEach((image) => {
+                        // Create the grid item (Muuri item)
+                        const item = document.createElement('div');
+                        item.classList.add('item', 'smallarge'); // Muuri class with your custom class
+
+                        // Create the card content
+                        const card = document.createElement('div');
+                        card.classList.add('cards');
+
+                        // Create the card header and controls (if needed)
+                        const cardHeader = document.createElement('div');
+                        cardHeader.classList.add('cardsHeader');
+
+                        const cardControls = document.createElement('div');
+                        cardControls.classList.add('cardsControls');
+
+                        const controlsLeft = document.createElement('div');
+                        controlsLeft.innerHTML =
+                            '<i class="fa-solid fa-arrows-up-down-left-right"></i>';
+
+                        const controlsRight = document.createElement('div');
+                        controlsRight.innerHTML =
+                            '<i class="fa-solid fa-window-minimize"></i> <i class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i>';
+
+                        cardControls.appendChild(controlsLeft);
+                        cardControls.appendChild(controlsRight);
+                        cardHeader.appendChild(cardControls);
+
+                        // Create the image element
+                        const img = document.createElement('img');
+                        img.src = `/images/gallery/${image}`;
+                        img.alt = image.split('.')[0]; // Set the alt text as the image name
+                        img.classList.add('thumbnail');
+
+                        // Append everything to the card
+                        card.appendChild(cardHeader);
+                        card.appendChild(img);
+
+                        // Append the card to the grid item
+                        item.appendChild(card);
+
+                        // Append the item to the grid container
+                        gridContainer.appendChild(item);
+                    });
+
+                    // Initialize Muuri
+                    const grid = new Muuri('.grid', {
+                        dragEnabled: true,
+                        layout: {
+                            fillGaps: true,
+                            horizontal: false,
+                            alignRight: false,
+                            alignBottom: false,
+                            rounding: false,
+                        },
+                    });
+                });
+            </script>
+
+            <script>
+                twemoji.parse(document.body)
+            </script>
 </body>
 
 </html>

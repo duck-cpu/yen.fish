@@ -1,14 +1,4 @@
 [
     {
-      "uri": "/index.html",
-      "title": "home",
-      "content": "home base",
-      "tags": ["", "", "example"]
-    },
-    {
-      "uri": "/blog/posts/2024-06-29-second-post.html",
-      "title": "Second Blog Post",
-      "content": "This is the content of my second blog post...",
-      "tags": ["blog", "second post", "example"]
     }
-  ]
+]

@@ -76,7 +76,7 @@ footer#footer {
 footer#footer ul {
   list-style: none;
   display: flex;
-  padding: 0 5px;
+  padding: 0 15px;
   margin: 0;
   height: 2.6rem;
 }
@@ -87,7 +87,7 @@ footer#footer ul li:first-child {
   flex: 1;
 }
 footer#footer ul li a {
-  padding: 0 10px;
+  padding: 0 15px;
   display: inline-flex;
   text-decoration: none;
 }
@@ -98,7 +98,8 @@ footer#footer ul li a.selected {
 #footer-button {
   font: var(--body-font);
   font-size: 1rem;
-  padding: 0 20px;
+  padding: 0 13px;
+  border-radius: 8px;
   border: 2px solid var(--secondary);
   color: var(--secondary);
 }
@@ -243,7 +244,6 @@ footer#footer ul li a.selected {
 
 .item {
   box-sizing: border-box;
-  margin: 10px;
   /* Optionally set a minimum height to prevent overlaps */
   /* Adjust this based on your layout */
 }
@@ -1343,4 +1343,8 @@ table td {
   max-width: 100%;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+
+#gallery-grid {
+  line-height: 0.8;
 }
