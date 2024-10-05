@@ -244,14 +244,12 @@ footer#footer ul li a.selected {
 .item {
   box-sizing: border-box;
   margin: 10px;
-  min-height: 240px;
   /* Optionally set a minimum height to prevent overlaps */
   /* Adjust this based on your layout */
 }
 
 .grid {
   display: flex;
-  flex-wrap: wrap;
   position: relative;
   width: 80%;
   margin: 1rem auto 5rem;
@@ -259,6 +257,7 @@ footer#footer ul li a.selected {
 .grid .item {
   position: absolute;
   width: 30%;
+  max-width: 100%;
   height: auto;
   margin: 1rem;
   z-index: 1;
@@ -374,7 +373,7 @@ footer#footer ul li a.selected {
   padding: 1.25em;
 }
 .cardsBodyTerm {
-  padding: 0em;
+  padding: 0.5em;
 }
 .cardsHeader {
   cursor: grab;

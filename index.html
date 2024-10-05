@@ -38,11 +38,12 @@
                     </div>
 
                     <div class="cardsBody">
-                        <h2>I'm Vincent<br /> ... || <a href="https://github.com/duck-cpu">duck-cpu</a></h2>
+                        <h3>#define VINCENT <br /> #define DUCK-CPU<br />
+                        </h3>
                         <br />
-                        <div id="canvas-container">
+                        <div id="mesh-container">
                             <style>
-                                #canvas-container {
+                                #mesh-container {
                                     width: 100%;
                                     height: 300px;
                                     margin: 0 auto;
@@ -64,14 +65,41 @@
 
                 </div>
             </div>
+            <div class="item medium ">
+                <div class="cards">
+                    <div class="cardsHeader">
+                        <div class="cardsControls">
+                            <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+                            <div> <i class="fa-solid fa-window-minimize"></i> <i
+                                    class="fa-regular fa-window-restore"></i>
+                                <i class="fa-solid fa-xmark"></i></div>
+                        </div>
+                    </div>
+                    <div class="cardsBody">
+                        <p>
+                            <h2> links to </h2>
+                            <p>
+                                > projects<br />
+                                > github<br />
+                                > linkedin (hire me
+                                <3 )<br />
+                                > my blog<br />
+                                > the past
 
+
+                            </p>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="item smallarge ">
                 <div class="cards">
                     <div class="cardsHeader">
                         <div class="cardsControls">
                             <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
                             <div> <i class="fa-solid fa-window-minimize"></i> <i
-                                    class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
+                                    class="fa-regular fa-window-restore"></i>
+                                <i class="fa-solid fa-xmark"></i></div>
                         </div>
                     </div>
                     <div class="cardsBody">
@@ -83,13 +111,39 @@
                 </div>
             </div>
 
-            <div class="item smallarge ">
+            <div class="item small">
                 <div class="cards">
                     <div class="cardsHeader">
                         <div class="cardsControls">
                             <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
                             <div> <i class="fa-solid fa-window-minimize"></i> <i
-                                    class="fa-regular fa-window-restore"></i> <i class="fa-solid fa-xmark"></i></div>
+                                    class="fa-regular fa-window-restore"></i>
+                                <i class="fa-solid fa-xmark"></i></div>
+                        </div>
+                    </div>
+                    <div class="cardsBody">
+                        <div id="apple-container">
+                            <style>
+                                #apple-container {
+                                    width: 100%;
+                                    height: 200px;
+                                    margin: 0 auto;
+                                    /* Centering */
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item small">
+                <div class="cards">
+                    <div class="cardsHeader">
+                        <div class="cardsControls">
+                            <div> <i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+                            <div> <i class="fa-solid fa-window-minimize"></i> <i
+                                    class="fa-regular fa-window-restore"></i>
+                                <i class="fa-solid fa-xmark"></i></div>
                         </div>
                     </div>
                     <div class="cardsBody">
@@ -162,12 +216,12 @@
                 var body = $("html, body");
                 body.stop().animate({
                     scrollTop: 0
-                }, 500, 'swing', function () {});
+                }, 500, ' swing', function () {});
             }
         </script>
-        <script type="text/javascript" src="js/clock.js"></script>
+        <script type="text/javascript" src="js/clock.js">
+        </script>
         <script defer type="text/javascript" src="js/start.js"></script>
-        <script src="js/theme.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"
             integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/muuri@0.9.5/dist/muuri.min.js"></script>
@@ -175,48 +229,195 @@
         <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous">
         </script>
         <script defer src="js/lightbox.js"></script>
-        <script defer src="js/yt_lite.js"></script>
         <script defer src="https://unpkg.com/lunr/lunr.js"></script>
         <script defer src="js/search.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/fflate@0.8.2/umd/index.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/ColladaLoader.js">
+        </script>
         <script>
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // Aspect ratio starts as 1
+            let scene1, scene2, camera1, camera2, renderer1, renderer2;
+            let sphere, appleModel;
+            let scrollSpeed = 0;
+            let previousScrollPosition = window.scrollY;
+            let decay = 0.95; // Decay factor to reduce the speed over time
+            let minSpeed =
+                0.001; // Minimum speed to prevent rotation from stopping entirely
 
-            // Get the container element
-            const container = document.getElementById('canvas-container');
-            const renderer = new THREE.WebGLRenderer({
-                alpha: true
-            });
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setClearColor(0x000000, 0);
-            container.appendChild(renderer.domElement);
+            // Initialize the scene, camera, and renderer for a given container
+            function initScene(containerId) {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 
-            // Create a sphere (ball)
-            const geometry = new THREE.SphereGeometry(1, 8, 8);
-            const material = new THREE.MeshBasicMaterial({
-                color: 0x00A706,
-                wireframe: true
-            });
-            const sphere = new THREE.Mesh(geometry, material);
-            scene.add(sphere);
+                const container = document.getElementById(containerId);
+                const renderer = new THREE.WebGLRenderer({
+                    alpha: true
+                });
 
-            camera.position.z = 1;
+                renderer.setSize(container.clientWidth, container.clientHeight);
+                renderer.setClearColor(0x000000, 0); // Transparent background
+                container.appendChild(renderer.domElement);
 
-            // Animation loop
-            function animate() {
-                requestAnimationFrame(animate);
-                sphere.rotation.x += 0.001;
-                sphere.rotation.y += 0.01;
+                camera.position.z = 1; // Set a bit further back for larger objects
+
+                window.addEventListener('resize', () => {
+                    renderer.setSize(container.clientWidth, container.clientHeight);
+                    camera.aspect = container.clientWidth / container.clientHeight;
+                    camera.updateProjectionMatrix();
+                });
+
+                return {
+                    scene,
+                    camera,
+                    renderer
+                };
+            }
+
+            // Add the mesh ball
+            function addMeshBall(scene) {
+                const geometry = new THREE.SphereGeometry(1, 6, 6);
+                const material = new THREE.MeshBasicMaterial({
+                    color: 0x00A706,
+                    wireframe: true
+                });
+                sphere = new THREE.Mesh(geometry, material);
+                scene.add(sphere);
+            }
+
+            function loadRandomModel() {
+
+                const models = [{
+                        fbx: '3d/APPLE.fbx',
+                        texture: '3d/APPLE01_B_1.png'
+                    },
+                    {
+                        fbx: '3d/BANANA.fbx',
+                        texture: '3d/BANANA01_B_1.png'
+                    },
+                    {
+                        fbx: '3d/MELON.fbx',
+                        texture: '3d/MELON01_C_1.png'
+                    }
+                    // Add more models here...
+                ];
+
+                if (models.length === 0) {
+                    console.error('No models found');
+                    return;
+                }
+
+                // Randomly select a model
+                const randomModel = models[Math.floor(Math.random() * models.length)];
+
+                // Load the randomly selected FBX model and its texture
+                loadAppleModel(scene2, randomModel.fbx, randomModel.texture);
+            }
+
+            // Load the Apple model using FBXLoader
+            function loadAppleModel(scene, fbxPath, texturePath = null) {
+
+                const ambientLight = new THREE.AmbientLight(0xffffff,
+                    0.5); // Increase intensity
+                scene.add(ambientLight);
+
+                const directionalLight = new THREE.DirectionalLight(0xffffff,
+                    0.6); // Increase intensity
+                directionalLight.position.set(10, 2, 10).normalize();
+                scene.add(directionalLight);
+
+                const loader = new THREE.FBXLoader();
+                loader.load(fbxPath, function (object) {
+                    appleModel = object;
+
+                    if (texturePath) {
+                        const textureLoader = new THREE.TextureLoader();
+                        const texture = textureLoader.load(texturePath);
+                        object.traverse(function (child) {
+                            if (child.isMesh) {
+                                child.material = new THREE
+                                    .MeshStandardMaterial({
+                                        map: texture,
+                                        metalness: 0.1, // Adjust for realism
+                                        roughness: 0.2, // Control shininess
+                                    });
+                                // Fix transparency issues by ensuring opacity is 1 and transparency is false
+                                child.material.transparent = false;
+                                child.material.opacity = 1;
+                            }
+                        });
+                    }
+
+                    appleModel.scale.set(3, 3, 3); // Adjust the scale of the model
+                    scene2.add(appleModel); // Add to the scene
+                });
+            }
+
+            // Animation loop for a given renderer, scene, and camera
+            function animate(renderer, scene, camera, objToRotate, secondObjToRotate =
+                null) {
+                requestAnimationFrame(() => animate(renderer, scene, camera, objToRotate,
+                    secondObjToRotate));
+                if (objToRotate) {
+                    objToRotate.rotation.x += 0.001;
+                    objToRotate.rotation.y += 0.01;
+                }
+
+                if (secondObjToRotate) {
+                    secondObjToRotate.rotation.x += Math.max(scrollSpeed, minSpeed);
+                    secondObjToRotate.rotation.y += -0.01;
+                }
+
+                scrollSpeed *= decay;
                 renderer.render(scene, camera);
             }
-            animate();
 
-            // Adjust the canvas size when the window is resized
-            window.addEventListener('resize', () => {
-                renderer.setSize(container.clientWidth, container.clientHeight);
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
+            // Track the scroll speed
+            window.addEventListener('scroll', () => {
+                const currentScrollPosition = window.scrollY;
+                scrollSpeed = Math.abs(currentScrollPosition -
+                        previousScrollPosition) *
+                    0.08; // Scale the speed
+                previousScrollPosition = currentScrollPosition;
+            });
+
+            // Initialize everything when the document is ready
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialize the first scene for the mesh ball
+                ({
+                    scene: scene1,
+                    camera: camera1,
+                    renderer: renderer1
+                } = initScene('mesh-container'));
+
+                addMeshBall(scene1); // Add the mesh ball
+                animate(renderer1, scene1, camera1,
+                    sphere); // Animate the mesh ball
+
+                // Initialize the second scene for the apple model
+                ({
+                    scene: scene2,
+                    camera: camera2,
+                    renderer: renderer2
+                } = initScene('apple-container'));
+
+
+                loadRandomModel(); // Load a random model
+                animate(renderer2, scene2, camera2,
+                    appleModel); // Animate the model
+
+                function animateApple() {
+                    animate(renderer2, scene2, camera2, null, appleModel);
+                }
+
+                const appleLoaderCheck = setInterval(() => {
+                    if (appleModel) {
+                        clearInterval(appleLoaderCheck);
+                        animateApple();
+                    }
+                }, 100);
             });
         </script>
         <script>
@@ -233,103 +434,6 @@
         <script>
             twemoji.parse(document.body)
         </script>
-        <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-        <!-- With modern browsers, jQuery mousewheel is not actually needed; scrolling will still work -->
-        <script src="/node_modules/jquery.terminal/js/jquery.mousewheel-min.js"></script>
-        <script>
-            async function main() {
-                let pyodide = await loadPyodide();
-
-                // Function to load scripts dynamically
-                async function loadScript(scriptName) {
-                    try {
-                        const response = await fetch(`./python/${scriptName}.py`);
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        const scriptContent = await response.text();
-                        return scriptContent;
-                    } catch (error) {
-                        console.error('Failed to load script:', scriptName, error);
-                        throw error;
-                    }
-                }
-
-
-                // Function to run a script and capture the output
-                async function runScript(scriptContent, terminal) {
-                    pyodide.runPython(`
-                    import sys
-                    from io import StringIO
-                    sys.stdout = sys.stderr = StringIO()
-                `);
-
-                    let inputRequested = false;
-                    let inputPrompt = "";
-
-                    pyodide.runPython(`
-                    import builtins
-                    original_input = builtins.input
-                    def custom_input(prompt=''):
-                        global inputRequested, inputPrompt
-                        inputRequested = True
-                        inputPrompt = prompt
-                        return ""
-                    builtins.input = custom_input
-                `);
-
-                    await pyodide.runPythonAsync(scriptContent);
-
-                    while (pyodide.globals.get("inputRequested")) {
-                        const prompt = pyodide.globals.get("inputPrompt");
-                        const userInput = await terminal.read(prompt);
-                        pyodide.runPython(`
-                        inputRequested = False
-                        builtins.input = original_input
-                `);
-                        pyodide.globals.set("userInput", userInput);
-                        pyodide.runPython(`
-                        user_input = globals().pop('userInput')
-                        input = lambda prompt='': user_input
-                    `);
-                        await pyodide.runPythonAsync(scriptContent);
-                    }
-
-                    const output = pyodide.runPython(`
-                            sys.stdout.getvalue()
-                `);
-                    return output;
-                }
-
-
-                // Initialize the terminal
-                $("#terminal").terminal(async function (command) {
-                    try {
-                        if (command.startsWith('run ')) {
-                            const scriptName = command.split(' ')[1];
-                            const scriptContent = await loadScript(scriptName);
-                            const result = await runScript(scriptContent, this);
-                            this.echo(result);
-                        } else {
-                            const result = await runScript(command, this);
-                            this.echo(result);
-                        }
-                    } catch (err) {
-                        this.error(err.toString());
-                    }
-                }, {
-                    greetings: 'いらっしゃいませ! Try: run bright',
-                    prompt: 'yen@fish>>> ',
-                    name: 'py_terminal',
-                    height: 200,
-                    width: '100%',
-                    theme: 'bootstrap'
-                });
-            }
-            main();
-        </script>
-
 </body>
 
 </html>
